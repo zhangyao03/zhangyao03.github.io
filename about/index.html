@@ -108,17 +108,17 @@
 
 
 
-  <meta name="description" content="I Am主用Java的后端程序员，喜欢看电影，喜欢发呆。有代码洁癖 Contact邮箱：zhangyao1611@gmail.com">
+  <meta name="description" content="我是主用Java的后端程序员，喜欢看电影，喜欢发呆。有代码洁癖 联系方式邮箱：zhangyao1611@gmail.com">
 <meta property="og:type" content="website">
 <meta property="og:title" content="About me">
 <meta property="og:url" content="http://yoursite.com/about/index.html">
 <meta property="og:site_name" content="大树的blog">
-<meta property="og:description" content="I Am主用Java的后端程序员，喜欢看电影，喜欢发呆。有代码洁癖 Contact邮箱：zhangyao1611@gmail.com">
+<meta property="og:description" content="我是主用Java的后端程序员，喜欢看电影，喜欢发呆。有代码洁癖 联系方式邮箱：zhangyao1611@gmail.com">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-12-08T15:50:08.577Z">
+<meta property="og:updated_time" content="2018-12-10T11:17:33.111Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="About me">
-<meta name="twitter:description" content="I Am主用Java的后端程序员，喜欢看电影，喜欢发呆。有代码洁癖 Contact邮箱：zhangyao1611@gmail.com">
+<meta name="twitter:description" content="我是主用Java的后端程序员，喜欢看电影，喜欢发呆。有代码洁癖 联系方式邮箱：zhangyao1611@gmail.com">
 
 
 
@@ -382,8 +382,8 @@
       <div class="post-body">
         
         
-          <h2 id="I-Am"><a href="#I-Am" class="headerlink" title="I Am"></a>I Am</h2><p>主用Java的后端程序员，喜欢看电影，喜欢发呆。<br>有代码洁癖</p>
-<h2 id="Contact"><a href="#Contact" class="headerlink" title="Contact"></a>Contact</h2><p>邮箱：<a href="mailto:zhangyao1611@gmail.com" target="_blank" rel="noopener">zhangyao1611@gmail.com</a></p>
+          <h2 id="我是"><a href="#我是" class="headerlink" title="我是"></a>我是</h2><p>主用Java的后端程序员，喜欢看电影，喜欢发呆。<br>有代码洁癖</p>
+<h2 id="联系方式"><a href="#联系方式" class="headerlink" title="联系方式"></a>联系方式</h2><p>邮箱：<a href="mailto:zhangyao1611@gmail.com" target="_blank" rel="noopener">zhangyao1611@gmail.com</a></p>
 
         
       </div>
@@ -403,6 +403,13 @@
 
           </div>
           
+
+  
+    <div class="comments" id="comments">
+      <div id="disqus_thread">
+        <noscript>Please enable JavaScript to view the comments powered by Disqus.</noscript>
+      </div>
+    </div>
 
   
 
@@ -493,7 +500,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#I-Am"><span class="nav-number">1.</span> <span class="nav-text">I Am</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Contact"><span class="nav-number">2.</span> <span class="nav-text">Contact</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#我是"><span class="nav-number">1.</span> <span class="nav-text">我是</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#联系方式"><span class="nav-number">2.</span> <span class="nav-text">联系方式</span></a></li></ol></div>
             
 
           </div>
@@ -648,8 +655,27 @@
 
   
 
+  
+    <script id="dsq-count-scr" src="https://大树.disqus.com/count.js" async></script>
+  
 
-
+  
+    <script type="text/javascript">
+      var disqus_config = function () {
+        this.page.url = 'http://yoursite.com/about/index.html';
+        this.page.identifier = 'about/index.html';
+        this.page.title = 'About me';
+        };
+      function loadComments () {
+        var d = document, s = d.createElement('script');
+        s.src = 'https://大树.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', '' + +new Date());
+        (d.head || d.body).appendChild(s);
+      }
+      
+        loadComments();
+      
+    </script>
   
 
 
@@ -661,13 +687,84 @@
 
 
 
-  
-
-
-
 
 
   
+
+
+
+
+
+  
+
+  
+  <script>
+    
+    function showTime(Counter) {
+      var entries = [];
+      var $visitors = $(".leancloud_visitors");
+
+      $visitors.each(function () {
+        entries.push( $(this).attr("id").trim() );
+      });
+
+      Counter('get', '/classes/Counter', { where: JSON.stringify({ url: { "$in": entries } }) })
+        .done(function ({ results }) {
+          var COUNT_CONTAINER_REF = '.leancloud-visitors-count';
+
+          if (results.length === 0) {
+            $visitors.find(COUNT_CONTAINER_REF).text(0);
+            return;
+          }
+
+          for (var i = 0; i < results.length; i++) {
+            var item = results[i];
+            var url = item.url;
+            var time = item.time;
+            var element = document.getElementById(url);
+
+            $(element).find(COUNT_CONTAINER_REF).text(time);
+          }
+          for(var i = 0; i < entries.length; i++) {
+            var url = entries[i];
+            var element = document.getElementById(url);
+            var countSpan = $(element).find(COUNT_CONTAINER_REF);
+            if( countSpan.text() == '') {
+              countSpan.text(0);
+            }
+          }
+        })
+        .fail(function ({ responseJSON }) {
+          console.log("LeanCloud Counter Error: " + responseJSON.code + " " + responseJSON.error);
+        });
+    }
+    
+
+    $(function() {
+      $.get('https://app-router.leancloud.cn/2/route?appId=' + "fIXKMyJ3S3zy0XLqGoieL6S5-gzGzoHsz")
+        .done(function ({ api_server }) {
+          var Counter = function (method, url, data) {
+            return $.ajax({
+              method: method,
+              url: `https://${api_server}/1.1${url}`,
+              headers: {
+                'X-LC-Id': "fIXKMyJ3S3zy0XLqGoieL6S5-gzGzoHsz",
+                'X-LC-Key': "VNQl6qPl4DgrXOCWvuSGi94C",
+                'Content-Type': 'application/json',
+              },
+              data: data,
+            });
+          };
+          
+          if ($('.post-title-link').length >= 1) {
+            showTime(Counter);
+          }
+          
+        })
+    });
+  </script>
+
+
 
   
 
